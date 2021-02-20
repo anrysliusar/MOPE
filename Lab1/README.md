@@ -1,1 +1,2 @@
-Результат виконання:
+# Результат виконання:
+![result](https://raw.githubusercontent.com/anrysliusar/MOPE/master/Lab1/lab1.png)
