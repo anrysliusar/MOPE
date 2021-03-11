@@ -14,7 +14,6 @@ rkrTable = {2: (1.73, 1.72, 1.71, 1.69),
 
 
 def main():
-    numOfExperiments = 5
     minLimY, maxLimY = 0, 100
     X1Min, X1MinNorm = -30, -1
     X1Max, X1MaxNorm = 20, 1
