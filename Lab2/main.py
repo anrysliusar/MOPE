@@ -2,7 +2,6 @@ import math
 from random import randint
 import numpy as np
 
-numOfExperiments = 5
 probList = (0.99, 0.98, 0.95, 0.90)
 rkrTable = {2: (1.73, 1.72, 1.71, 1.69),
             6: (2.16, 2.13, 2.10, 2.00),
@@ -14,6 +13,7 @@ rkrTable = {2: (1.73, 1.72, 1.71, 1.69),
 
 
 def main():
+    numOfExperiments = 5
     minLimY, maxLimY = 0, 100
     X1Min, X1MinNorm = -30, -1
     X1Max, X1MaxNorm = 20, 1
@@ -54,8 +54,6 @@ def main():
             return u / v
         else:
             return v / u
-
-    print(checkRegressionStr())
 
     yMatrix = [[randint(minLimY, maxLimY) for i in range(numOfExperiments)] for j in range(3)]
 
