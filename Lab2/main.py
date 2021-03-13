@@ -1,6 +1,7 @@
 import math
 from random import randint
 import numpy as np
+from time import process_time
 
 probList = (0.99, 0.98, 0.95, 0.90)
 rkrTable = {2: (1.73, 1.72, 1.71, 1.69),
@@ -13,7 +14,7 @@ rkrTable = {2: (1.73, 1.72, 1.71, 1.69),
 
 
 def main():
-    numOfExperiments = 5
+    numOfExperiments = 20
     minLimY, maxLimY = 0, 100
     X1Min, X1MinNorm = -30, -1
     X1Max, X1MaxNorm = 20, 1
@@ -159,5 +160,10 @@ def main():
         print("Коефіцієнти натуралізованого рівняння регресії не вірні")
     print(checkRegressionStr())
 
+
 if __name__ == '__main__':
-    main()
+    timeStart = process_time()
+    for i in range(100):
+        main()
+    timeEnd = process_time()
+    print(f"Середній час виконання алгоритму {(timeEnd - timeStart) / 2}")
