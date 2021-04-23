@@ -4,9 +4,13 @@ import sklearn.linear_model as lm
 from scipy.stats import f, t
 from numpy.linalg import solve
 
+linearCoeffs = []
+interactionCoeffs = []
 def main(n, m):
     if not linear(n, m):
         withInteractionEffect(n, m)
+        print(f"Перед взаємодією{linearCoeffs}")
+        print(f"Після взаємодії{interactionCoeffs}")
 
 
 def linear(n, m):
@@ -43,6 +47,8 @@ def linear(n, m):
     print('Розрахункове значення критерій Стьюдента:\n', studentT)
     resStudentT = [temp for temp in studentT if temp > studentCrTable]
     finalCoefficients = [B[studentT.index(i)] for i in studentT if i in resStudentT]
+    global linearCoeffs
+    linearCoeffs = [i for i in B if i not in finalCoefficients]
     print('Коефіцієнти {} статистично незначущі.'.
           format([i for i in B if i not in finalCoefficients]))
 
@@ -201,6 +207,8 @@ def check(X, Y, B, n, m, norm=False):
     print('\nКритерій Стьюдента:\n', ts)
     res = [t for t in ts if t > studentsCriteriaTable]
     finalK = [B[i] for i in range(len(ts)) if ts[i] in res]
+    global interactionCoeffs
+    interactionCoeffs = [round(i, 3) for i in B if i not in finalK]
     print('\nКоефіцієнти {} статистично незначущі, тому ми виключаємо їх з рівняння.'.format(
         [round(i, 3) for i in B if i not in finalK]))
 
