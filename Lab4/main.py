@@ -1,16 +1,12 @@
-import numpy as np
 import random
+import numpy as np
+import sklearn.linear_model as lm
 from scipy.stats import f, t
 from numpy.linalg import solve
-import sklearn.linear_model as lm
-
 
 def main(n, m):
-    main1 = linear(n, m)
-    if not main1:
-        interactionEffect = withInteractionEffect(n, m)
-        if not interactionEffect:
-            main(n, m)
+    if not linear(n, m):
+        withInteractionEffect(n, m)
 
 
 def linear(n, m):
