@@ -4,6 +4,6 @@
 - Залікова книжка № 9125
 - Варінт №20
 
-![variant](/Lab4/variant.png)
+![variant](/Lab5/variant.png)
 
-![Run](/Lab4/run.png)
+![Run](/Lab5/run.png)
