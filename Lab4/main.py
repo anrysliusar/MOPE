@@ -46,6 +46,7 @@ def linear(n, m):
     print('Коефіцієнти {} статистично незначущі.'.
           format([i for i in B if i not in finalCoefficients]))
 
+
     newY = []
     for j in range(n):
         newY.append(
@@ -124,11 +125,11 @@ def interactionPlanMatrix(n, m):
     return x, y, normalizedX
 
 
-def findCoef(X, Y, isNorm=False):
+def findCoef(X, Y, norm=False):
     skm = lm.LinearRegression(fit_intercept=False)
     skm.fit(X, Y)
     coefficientsB = skm.coef_
-    if isNorm == 1:
+    if norm == 1:
         print('Коефіцієнти з нормованими Х:')
     else:
         print('Коефіцієнти рівняння регресії')
@@ -172,7 +173,7 @@ def criteriaFisher(y, avgY, newY, n, m, d, dispersion):
     return Sad / avgDispersion
 
 
-def check(X, Y, B, n, m):
+def check(X, Y, B, n, m, norm=False):
     f1 = m - 1
     f2 = n
     f3 = f1 * f2
@@ -202,6 +203,7 @@ def check(X, Y, B, n, m):
     finalK = [B[i] for i in range(len(ts)) if ts[i] in res]
     print('\nКоефіцієнти {} статистично незначущі, тому ми виключаємо їх з рівняння.'.format(
         [round(i, 3) for i in B if i not in finalK]))
+
 
     newY = []
     for j in range(n):
