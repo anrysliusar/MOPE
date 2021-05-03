@@ -3,7 +3,7 @@ import sklearn.linear_model as lm
 from scipy.stats import f, t
 from functools import partial
 from pyDOE2 import *
-from time import time
+from time import process_time
 
 
 def regression(x, b):
@@ -192,6 +192,8 @@ def check(X, Y, B, n, m):
     print(f'\nЗначення "y" з коефіцієнтами {finalK}')
     print(newY)
 
+    timeStart = process_time()
+
     d = len(res)
     if d >= n:
         print('\nF4 <= 0')
@@ -200,7 +202,6 @@ def check(X, Y, B, n, m):
     f4 = n - d
 
     Fp = kriteriaFisher(Y, avgY, newY, n, m, d)
-
     fisher = partial(f.ppf, q=0.95)
     Ft = fisher(dfn=f4, dfd=f3)
     print('\nПеревірка адекватності за критерієм Фішера')
@@ -210,6 +211,9 @@ def check(X, Y, B, n, m):
         print('Математична модель адекватна експериментальним даним')
     else:
         print('Математична модель не адекватна експериментальним даним')
+
+    timeEnd = process_time()
+    print(f"Час перевірки адекватності системи за критерієм Фішера: {timeEnd - timeStart}")
 
 
 def main(n, m):
